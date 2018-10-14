@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -26,13 +26,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '4i&u(!%shd*0-3$ls)fohsjsd48t(gu%1-ch_
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['disquaire.herokuapp.com']
+ALLOWED_HOSTS = ['51.254.202.2']
 
 
 # Application definition
@@ -89,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
         'NAME': 'disquaire', # le nom de notre base de données créée précédemment
-        'USER': 'celinems', # attention : remplacez par votre nom d'utilisateur !!
-        'PASSWORD': '',
-        'HOST': '',
+        'USER': 'udisquaire', # attention : remplacez par votre nom d'utilisateur !!
+        'PASSWORD': 'pdisquaire',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -139,11 +136,3 @@ STATIC_URL = '/static/'
 # Django debug toolbar
 INTERNAL_IPS = ['127.0.0.1']
 
-
-if os.environ.get('ENV') == 'PRODUCTION':
-
-    STATIC_ROOT = os.path.join(BASE_ROOT, 'staticfiles')
-
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
